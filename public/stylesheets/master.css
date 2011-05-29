@@ -1,0 +1,130 @@
+/* @override http://localhost:3000/stylesheets/master.css */
+
+* {
+	font-family: helvetica, arial, sans-serif;
+	padding: 0;
+	margin: 0;
+}
+body {
+	background: #efefef;
+	color: #343434;
+}
+h1 {
+	font-size: 27px;
+}
+#container {
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+	background: #fff;
+	-webkit-box-shadow: 1px 1px 3px #595959;
+	-moz-box-shadow: 1px 1px 3px #595959;
+	box-shadow: 1px 1px 3px #595959;
+}
+#inner {
+	padding: 20px;
+	overflow: auto;
+}
+#results, #survey_entries {
+	margin-top: 20px;
+}
+#survey_entries p{
+	width: 17%;
+	float: left;
+	margin-right: 10px;
+}
+#survey_entries button {
+}
+#survey_entries button {
+	display: block;
+	width: 100%;
+	font-size: 1.5em;
+	cursor: pointer;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  background: -moz-linear-gradient(top, #555, #030303);
+  background: -webkit-gradient(linear, left top, left bottom, from(#555), to(#030303));
+  box-shadow: inset 1px 1px 1px #a9a9a9;
+  -moz-box-shadow: inset 1px 1px 1px #a9a9a9;
+  -webkit-box-shadow: inset 1px 1px 1px #a9a9a9;
+  text-shadow: rgba(0, 0, 0, 0.3) -1px -1px 1px;
+  border: 1px solid #000;
+  color: #fff;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  padding: .6em .7em;
+  text-decoration:none;
+  line-height:1;
+}
+#survey_entries button:hover {  background: -moz-linear-gradient(top, #030303, #555);
+  background: -webkit-gradient(linear, left top, left bottom, from(#030303), to(#555));
+}
+
+/* Optional styles */
+.chartscontainer {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.chartsbar {
+	height: 20px;
+	padding: 6px !important;
+}
+
+.chartscontainer ul {
+	padding-left: 0;
+}
+
+.chartscontainer li {
+	list-style: none;
+}
+
+.chartsgridline.even {
+	background-color: Gray;
+	text-align: left;
+}
+
+.chartsgridline.odd {
+	background-color: Transparent;
+	text-align: left;
+}
+
+/* jQuery Notice */
+.notice-wrap {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	width: 250px;
+	z-index: 9999;
+}
+
+* html .notice-wrap {
+	position: absolute;		
+}
+
+.notice-item {
+	height: 60px;
+	background: #333;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	color: #eee;
+	padding: 6px 6px 0 6px;
+	font-family: lucida Grande;
+	font-size: 11px;
+	border: 2px solid #999;
+	display: block;
+	position: relative;
+	margin: 0 0 12px 0;
+}
+
+.notice-item-close {
+	position: absolute;
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: bold;
+	right: 6px;
+	top: 6px;
+	cursor: pointer;
+}

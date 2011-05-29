@@ -1,0 +1,2 @@
+module SurveyEntriesHelper
+end

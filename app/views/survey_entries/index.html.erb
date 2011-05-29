@@ -1,0 +1,61 @@
+<div id="container">
+	<div id="inner">
+		<h1>The best language in the world is...</h1>
+
+		<table id="results">
+			<thead>
+				<tr>
+					<th>Language</th>
+					<th>Votes</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @survey_entries.each do |o| %>
+				<tr>
+					<td><%= o['title'] %></td>
+					<td><%= o['votes'] %></td>
+				</tr>
+			<% end %>
+			</tbody>
+		</table>
+	
+		<form action="/survey_entries" method="POST" id="survey_entries">
+			<% SurveyEntry::FORM_OPTIONS.each do |o| %>
+			<p><button name="choice" value="<%= o %>"><%= o %></button></p>
+			<% end %>
+		</form>
+		
+	</div>
+</div>
+
+<script src="http://js.pusherapp.com/1.8/pusher.min.js"></script>
+<script>
+	jQuery("#results").charts();
+	
+	jQuery(function () {
+		//establish Pusher connection
+		var pusher = new Pusher('YOUR_API_KEY');
+		var myChannel = pusher.subscribe('survey-channel');
+		// deal with new messages
+		myChannel.bind('data-changed', function(data){
+			updateResults(data)
+		});
+	});
+	
+	function updateResults(data){
+		jQuery.noticeAdd({
+			text: 'Results updated',
+			stay: false
+		});
+	
+		var tbody = jQuery("#results tbody");
+		var html = "";
+		for (var i=0; i < data.length; i++) {
+			html += "<tr><td>" + data[i].title + "</td>" +
+				 "<td>" + data[i].votes + "</td></tr>";
+		}		
+		tbody.html(html);
+		jQuery(".chartscontainer").remove(); // remove old chart
+		jQuery("#results").charts(); // show updated chart
+	}
+</script>
