@@ -1,6 +1,6 @@
 <div id="container">
 	<div id="inner">
-		<h1>The best language in the world is...</h1>
+		<h1>The best Social Network in the world is...</h1>
 
 		<table id="results">
 			<thead>
@@ -30,16 +30,37 @@
 
 <script src="http://js.pusher.com/1.12/pusher.min.js"></script>
 <script>
+	Pusher.log = function( msg ) {
+		if( window.console && window.console.log ) {
+			window.console.log( msg );
+		}
+	};
+
 	jQuery("#results").charts();
 	
 	jQuery(function () {
 		//establish Pusher connection
-		var pusher = new Pusher('YOUR_API_KEY');
+		var pusher = new Pusher('<%= @app_key %>', { encrypted: true } );
 		var myChannel = pusher.subscribe('survey-channel');
 		// deal with new messages
 		myChannel.bind('data-changed', function(data){
 			updateResults(data)
 		});
+
+		$( '#survey_entries button' ).click( function(ev) {
+			
+			var value = $( ev.target || ev.srcElement ).attr( 'value' );
+			$.ajax( {
+				url: 'survey_entries',
+				data: {
+					choice: value
+				},
+				type: 'post'
+			});
+
+			return false;
+
+		 } );
 	});
 	
 	function updateResults(data){
@@ -56,6 +77,6 @@
 		}		
 		tbody.html(html);
 		jQuery(".chartscontainer").remove(); // remove old chart
-		jQuery("#results").charts(); // show updated chart
+		jQuery("#results").charts( { duration: 0 } ); // show updated chart
 	}
 </script>

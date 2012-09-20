@@ -1,6 +1,7 @@
 class SurveyEntriesController < ApplicationController
   def index
     @survey_entries = SurveyEntry.get_results
+    @app_key = Pusher.key
   end
 
   def create

@@ -1,5 +1,5 @@
 class SurveyEntry < ActiveRecord::Base
-	FORM_OPTIONS = ['ruby', 'php', 'python', 'java', 'other']
+	FORM_OPTIONS = ['Facebook', 'Twitter', 'LinkedIn', 'Google+', 'other']
 
 	def self.get_results
 		counts =  SurveyEntry .count({ :group => :choice })	

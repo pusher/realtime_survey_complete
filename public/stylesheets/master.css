@@ -39,7 +39,6 @@ h1 {
 #survey_entries button {
 	display: block;
 	width: 100%;
-	font-size: 1.5em;
 	cursor: pointer;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -52,7 +51,7 @@ h1 {
   border: 1px solid #000;
   color: #fff;
   display: inline-block;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   padding: .6em .7em;
   text-decoration:none;
