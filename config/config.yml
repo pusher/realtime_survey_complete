@@ -1,0 +1,8 @@
+development:
+  reset_password: pleaseresetme
+
+test:
+  reset_password: pleaseresetme
+
+production:
+  reset_password: pleaseresetme

@@ -1,4 +1,5 @@
 class SurveyEntriesController < ApplicationController
+  
   def index
     @survey_entries = SurveyEntry.get_results
     @app_key = Pusher.key
@@ -10,4 +11,18 @@ class SurveyEntriesController < ApplicationController
     
     redirect_to '/'
   end
+
+  def reset
+
+	settings = YAML.load_file("#{Rails.root}/config/config.yml")[RAILS_ENV]
+    @notice = 'Enter the secret password!'
+
+	if params[:password] == settings['reset_password'] 
+  		SurveyEntry.delete_all
+    	redirect_to '/'
+    elsif params[:password]
+    	@notice = 'Wrong password!'
+  	end
+  end
+
 end
